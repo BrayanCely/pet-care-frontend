@@ -1,0 +1,17 @@
+<header class="topbar">
+  <a class="brand" routerLink="/inicio">🐾 PeludOS</a>
+
+  <nav>
+    <a routerLink="/inicio" routerLinkActive="active">Inicio</a>
+    <a routerLink="/mis-mascotas" routerLinkActive="active">Mis mascotas</a>
+    <a routerLink="/tienda" routerLinkActive="active">Tienda</a>
+    <a routerLink="/veterinarias" routerLinkActive="active">Veterinarias</a>
+    <a routerLink="/perfil" routerLinkActive="active">Mi perfil</a>
+  </nav>
+
+  <button type="button" class="logout" (click)="auth.logout()">Cerrar sesión</button>
+</header>
+
+<main class="content">
+  <router-outlet />
+</main>

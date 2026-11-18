@@ -1,0 +1,54 @@
+<div class="acciones">
+  <button type="button" class="btn" [class.activo]="vista() === 'anadir'" (click)="mostrar('anadir')">
+    ➕ Añadir mi mascota
+  </button>
+  <button type="button" class="btn" [class.activo]="vista() === 'ver'" (click)="mostrar('ver')">
+    🐾 Ver mis mascotas
+  </button>
+</div>
+
+@if (mensaje()) {
+  <p class="ok">{{ mensaje() }}</p>
+}
+@if (error()) {
+  <p class="error">{{ error() }}</p>
+}
+
+@if (vista() === 'anadir') {
+  <form class="formulario" (ngSubmit)="guardar()">
+    <h2>Añadir mi mascota</h2>
+
+    <label for="nombre">Nombre</label>
+    <input id="nombre" name="nombre" [(ngModel)]="nueva.nombre" required />
+
+    <label for="especie">Especie</label>
+    <input id="especie" name="especie" [(ngModel)]="nueva.especie" placeholder="Perro, gato..." required />
+
+    <label for="raza">Raza (opcional)</label>
+    <input id="raza" name="raza" [(ngModel)]="nueva.raza" />
+
+    <label for="fecha">Fecha de nacimiento (opcional)</label>
+    <input id="fecha" name="fecha" type="date" [(ngModel)]="nueva.fecha_nacimiento" />
+
+    <button type="submit" class="guardar">Guardar mascota</button>
+  </form>
+} @else {
+  @if (cargando()) {
+    <p class="vacio">Cargando...</p>
+  } @else if (mascotas().length === 0) {
+    <p class="vacio">Aún no tienes mascotas. ¡Añade la primera!</p>
+  } @else {
+    <div class="lista">
+      @for (m of mascotas(); track m.id_mascota ?? m.id ?? $index) {
+        <article class="tarjeta">
+          <span class="icono">🐾</span>
+          <h3>{{ m.nombre }}</h3>
+          <p>{{ m.especie }}@if (m.raza) { · {{ m.raza }} }</p>
+          @if (m.fecha_nacimiento) {
+            <small>Nació el {{ m.fecha_nacimiento }}</small>
+          }
+        </article>
+      }
+    </div>
+  }
+}

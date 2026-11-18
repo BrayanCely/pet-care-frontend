@@ -1,0 +1,110 @@
+<section class="perfil">
+  <!-- Tu información -->
+  <div class="tarjeta-usuario">
+    <div class="avatar-marco grande">
+      <ng-container [ngTemplateOutlet]="persona" />
+    </div>
+
+    <div class="datos">
+      <h1>{{ usuario()?.nombre_completo ?? 'Mi perfil' }}</h1>
+      @if (error()) {
+        <p class="error">{{ error() }}</p>
+      }
+      <ul>
+        <li><span>✉️ Correo</span><strong>{{ usuario()?.correo_electronico ?? '—' }}</strong></li>
+        <li><span>📞 Teléfono</span><strong>{{ usuario()?.telefono ?? '—' }}</strong></li>
+        <li><span>📍 Dirección</span><strong>{{ usuario()?.direccion ?? '—' }}</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tus mascotas -->
+  <h2>Mis mascotas</h2>
+
+  @if (cargando()) {
+    <p class="vacio">Cargando...</p>
+  } @else if (mascotas().length === 0) {
+    <div class="vacio-caja">
+      <div class="avatar-marco mediano">
+        <ng-container [ngTemplateOutlet]="perro" />
+      </div>
+      <p>
+        Aún no tienes mascotas registradas.
+        <a routerLink="/mis-mascotas">Añade la primera</a> y aparecerá aquí.
+      </p>
+    </div>
+  } @else {
+    <div class="lista">
+      @for (m of mascotas(); track m.id_mascota ?? m.id ?? $index) {
+        <article class="mascota">
+          <div class="avatar-marco mediano">
+            @if (esGato(m)) {
+              <ng-container [ngTemplateOutlet]="gato" />
+            } @else {
+              <ng-container [ngTemplateOutlet]="perro" />
+            }
+          </div>
+          <h3>{{ m.nombre }}</h3>
+          <p>{{ m.especie }}@if (m.raza) { · {{ m.raza }} }</p>
+        </article>
+      }
+    </div>
+  }
+</section>
+
+<!-- ILUSTRACIÓN: tú -->
+<ng-template #persona>
+  <svg class="flotar" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="100" fill="#e5e7eb" />
+    <path d="M30 200 C30 150 70 135 100 135 C130 135 170 150 170 200 Z" fill="#25282e" />
+    <rect x="88" y="115" width="24" height="28" fill="#f1c9a5" />
+    <circle cx="100" cy="90" r="38" fill="#f1c9a5" />
+    <path d="M62 86 C58 48 84 38 100 38 C122 38 144 50 138 86 C128 70 115 64 100 64 C85 64 72 70 62 86 Z" fill="#3b2f2a" />
+    <ellipse class="ojo" cx="86" cy="92" rx="4" ry="5" fill="#25282e" />
+    <ellipse class="ojo" cx="114" cy="92" rx="4" ry="5" fill="#25282e" />
+    <circle cx="78" cy="104" r="6" fill="#f2a7a0" opacity="0.5" />
+    <circle cx="122" cy="104" r="6" fill="#f2a7a0" opacity="0.5" />
+    <path d="M86 106 Q100 120 114 106" stroke="#25282e" stroke-width="3" fill="none" stroke-linecap="round" />
+  </svg>
+</ng-template>
+
+<!-- ILUSTRACIÓN: perro -->
+<ng-template #perro>
+  <svg class="flotar" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="100" fill="#e5e7eb" />
+    <path class="cola" d="M150 150 Q182 122 170 98" stroke="#c98b4f" stroke-width="12" stroke-linecap="round" fill="none" />
+    <ellipse cx="100" cy="158" rx="48" ry="34" fill="#d9a066" />
+    <g transform="rotate(-20 62 80)">
+      <ellipse class="oreja" cx="62" cy="80" rx="14" ry="28" fill="#a8693a" />
+    </g>
+    <g transform="rotate(20 138 80)">
+      <ellipse class="oreja der" cx="138" cy="80" rx="14" ry="28" fill="#a8693a" />
+    </g>
+    <circle cx="100" cy="95" r="42" fill="#d9a066" />
+    <ellipse cx="100" cy="112" rx="22" ry="16" fill="#f3dcc0" />
+    <ellipse cx="100" cy="104" rx="8" ry="6" fill="#25282e" />
+    <circle class="ojo" cx="84" cy="88" r="5" fill="#25282e" />
+    <circle class="ojo" cx="116" cy="88" r="5" fill="#25282e" />
+    <path d="M100 110 L100 117 M100 117 Q92 125 86 119 M100 117 Q108 125 114 119" stroke="#25282e" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    <ellipse class="lengua" cx="100" cy="124" rx="6" ry="8" fill="#f06b7e" />
+  </svg>
+</ng-template>
+
+<!-- ILUSTRACIÓN: gato -->
+<ng-template #gato>
+  <svg class="flotar" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="100" fill="#e5e7eb" />
+    <path class="cola" d="M150 160 Q190 150 180 105" stroke="#9aa0aa" stroke-width="12" stroke-linecap="round" fill="none" />
+    <ellipse cx="100" cy="158" rx="46" ry="34" fill="#b4bac4" />
+    <polygon points="62,72 68,34 98,58" fill="#b4bac4" />
+    <polygon points="138,72 132,34 102,58" fill="#b4bac4" />
+    <polygon points="70,60 72,46 86,57" fill="#f2a7b5" />
+    <polygon points="130,60 128,46 114,57" fill="#f2a7b5" />
+    <circle cx="100" cy="92" r="40" fill="#b4bac4" />
+    <ellipse class="ojo" cx="84" cy="88" rx="5" ry="6" fill="#25282e" />
+    <ellipse class="ojo" cx="116" cy="88" rx="5" ry="6" fill="#25282e" />
+    <polygon points="95,100 105,100 100,107" fill="#f06b7e" />
+    <path d="M100 107 Q92 116 86 110 M100 107 Q108 116 114 110" stroke="#25282e" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    <path d="M70 104 L50 100 M70 110 L50 114 M130 104 L150 100 M130 110 L150 114" stroke="#25282e" stroke-width="2" stroke-linecap="round" />
+  </svg>
+</ng-template>

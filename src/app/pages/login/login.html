@@ -1,0 +1,45 @@
+<div class="page">
+  <div class="card">
+    <section class="brand-panel">
+      <div class="logo">🐾 <span>PeludOS</span></div>
+      <h2>Todo el cuidado de tu mascota, en un solo lugar.</h2>
+      <p>Citas, vacunas, recordatorios y más, siempre a la mano.</p>
+    </section>
+
+    <section class="form-panel">
+      <h1>Bienvenido de nuevo</h1>
+      <p class="subtitle">Inicia sesión para continuar</p>
+
+      <form (ngSubmit)="entrar()">
+        <label for="correo">Correo electrónico</label>
+        <input id="correo" type="email" name="correo" [(ngModel)]="correo" required />
+
+        <label for="contrasena">Contraseña</label>
+        <div class="password">
+          <input
+            id="contrasena"
+            [type]="verClave() ? 'text' : 'password'"
+            name="contrasena"
+            [(ngModel)]="contrasena"
+            required
+          />
+          <button type="button" class="toggle" (click)="verClave.set(!verClave())">
+            {{ verClave() ? 'Ocultar' : 'Mostrar' }}
+          </button>
+        </div>
+
+        <a class="forgot" href="#">¿Olvidaste tu contraseña?</a>
+
+        @if (error()) {
+          <p class="error">{{ error() }}</p>
+        }
+
+        <button type="submit" class="submit" [disabled]="cargando()">
+          {{ cargando() ? 'Entrando...' : 'Iniciar sesión' }}
+        </button>
+      </form>
+
+      <p class="register">¿No tienes cuenta? <a href="#">Regístrate</a></p>
+    </section>
+  </div>
+</div>

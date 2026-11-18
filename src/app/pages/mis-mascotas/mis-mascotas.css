@@ -1,0 +1,77 @@
+.acciones {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: 1px solid #d5d8de;
+  border-radius: 12px;
+  background: #fff;
+  color: #25282e;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn:hover { background: #eceef2; }
+.btn.activo { background: #25282e; color: #fff; border-color: #25282e; }
+
+.ok { text-align: center; color: #067647; margin: 0 0 16px; }
+.error { text-align: center; color: #b42318; margin: 0 0 16px; }
+.vacio { text-align: center; color: #5b6270; }
+
+.formulario {
+  max-width: 440px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+.formulario h2 { margin: 0 0 8px; color: #25282e; }
+.formulario label { display: block; margin: 14px 0 6px; font-size: 13px; font-weight: 600; color: #25282e; }
+.formulario input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  border: 1px solid #e1e3e8;
+  border-radius: 10px;
+  background: #f5f6f8;
+  font-size: 15px;
+  outline: none;
+}
+.formulario input:focus { border-color: #25282e; background: #fff; }
+.guardar {
+  width: 100%;
+  margin-top: 22px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #2b2e35;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.guardar:hover { background: #1c1e23; }
+
+.lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.tarjeta {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+}
+.tarjeta .icono { font-size: 32px; }
+.tarjeta h3 { margin: 8px 0 4px; color: #25282e; }
+.tarjeta p { margin: 0; color: #5b6270; font-size: 14px; }
+.tarjeta small { color: #8a8f99; }

@@ -1,0 +1,155 @@
+.encabezado {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.encabezado h1 {
+  margin: 0 0 6px;
+  font-size: 30px;
+  color: #25282e;
+}
+
+.encabezado p {
+  margin: 0;
+  color: #5b6270;
+}
+
+/* Cuadros de ciudad apilados verticalmente */
+.ciudades {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.ciudad {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 110px;
+  padding: 24px 32px;
+  background: linear-gradient(160deg, #2b2e35, #1c1e23);
+  color: #fff;
+  cursor: pointer;
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: '▾';
+  font-size: 28px;
+  color: #c9ccd1;
+  transition: transform 0.2s ease;
+}
+
+.ciudad[open] summary::after {
+  transform: rotate(180deg);
+}
+
+summary:hover {
+  background: linear-gradient(160deg, #343841, #25282e);
+}
+
+.ciudad-titulo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ciudad-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 34px;
+}
+
+.ciudad-titulo strong {
+  display: block;
+  font-size: 28px;
+  color: #fff;
+}
+
+.ciudad-titulo small {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #a3a7ae;
+}
+
+/* Veterinarias en una sola columna, hacia abajo */
+.grilla {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 32px 32px;
+  background: #f9fafb;
+}
+
+.tarjeta {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #e5e7eb;
+  font-size: 20px;
+}
+
+.barrio {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #25282e;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tarjeta h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #25282e;
+}
+
+.direccion {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #343841;
+}
+
+.descripcion {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #5b6270;
+}

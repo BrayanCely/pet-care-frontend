@@ -1,0 +1,34 @@
+<section class="encabezado">
+  <h1>Veterinarias en Colombia</h1>
+  <p>Elige una ciudad para ver las veterinarias disponibles.</p>
+</section>
+
+<section class="ciudades">
+  @for (c of ciudades; track c.nombre) {
+    <details class="ciudad" [open]="$first">
+      <summary>
+        <span class="ciudad-titulo">
+          <span class="ciudad-icono">🏙️</span>
+          <span>
+            <strong>{{ c.nombre }}</strong>
+            <small>{{ c.departamento }} · {{ c.veterinarias.length }} veterinarias</small>
+          </span>
+        </span>
+      </summary>
+
+      <div class="grilla">
+        @for (v of c.veterinarias; track v.nombre) {
+          <article class="tarjeta">
+            <div class="cabecera">
+              <span class="icono">🩺</span>
+              <span class="barrio">{{ v.barrio }}</span>
+            </div>
+            <h3>{{ v.nombre }}</h3>
+            <p class="direccion">📍 {{ v.direccion }}, {{ v.barrio }}, {{ c.nombre }}</p>
+            <p class="descripcion">{{ v.descripcion }}</p>
+          </article>
+        }
+      </div>
+    </details>
+  }
+</section>

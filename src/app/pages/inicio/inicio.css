@@ -1,0 +1,83 @@
+.hero {
+  text-align: center;
+  max-width: 720px;
+  margin: 8px auto 64px;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: 34px;
+  color: #25282e;
+}
+
+.lead {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #5b6270;
+}
+
+.nubes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 64px 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 24px;
+}
+
+/* La nube: tarjeta blanca con dos "bultos" arriba */
+.nube {
+  position: relative;
+  background: #fff;
+  border-radius: 40px;
+  padding: 36px 28px 28px;
+  text-align: center;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
+}
+
+.nube::before,
+.nube::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.nube::before {
+  width: 70px;
+  height: 70px;
+  top: -26px;
+  left: 36px;
+}
+
+.nube::after {
+  width: 90px;
+  height: 90px;
+  top: -38px;
+  right: 40px;
+}
+
+.nube > * {
+  position: relative;
+  z-index: 1;
+}
+
+.icono {
+  display: block;
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.nube h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #25282e;
+}
+
+.nube p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5b6270;
+}

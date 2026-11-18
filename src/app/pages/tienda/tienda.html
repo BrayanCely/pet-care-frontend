@@ -1,0 +1,17 @@
+<section class="encabezado">
+  <h1>Tienda</h1>
+  <p>Todo lo que tu mascota necesita, en un solo lugar.</p>
+</section>
+
+<section class="grilla">
+  @for (p of productos; track p.nombre) {
+    <article class="cuadro">
+      <div class="imagen">{{ p.icono }}</div>
+      <div class="info">
+        <h3>{{ p.nombre }}</h3>
+        <p class="descripcion">{{ p.descripcion }}</p>
+        <p class="precio">{{ precio(p.precio) }}</p>
+      </div>
+    </article>
+  }
+</section>
