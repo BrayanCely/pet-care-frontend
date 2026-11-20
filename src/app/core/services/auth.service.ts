@@ -14,16 +14,16 @@ export class AuthService {
   private router = inject(Router);
   private readonly KEY = 'peludos_token';
 
-  login(correo: string, contrasena: string) {
-    // Creamos el objeto JSON con los nombres exactos que espera tu backend
-    const body = {
-      correo_electronico: correo,
-      contrasena: contrasena
-    };
+    login(correo: string, contrasena: string) {
+    // Usamos HttpParams para enviar los datos como un formulario (lo que espera OAuth2)
+    const body = new HttpParams()
+      .set('username', correo)
+      .set('password', contrasena);
 
     return this.http
-      // Apuntamos directo a la IP de Azure con el puerto 8000
-      .post<LoginResponse>('http://68.211.178.234:8000/auth/login', body)
+      .post<LoginResponse>('http://68.211.178.234:8000/auth/login', body, {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      })
       .pipe(tap((res) => localStorage.setItem(this.KEY, res.access_token)));
   }
 
