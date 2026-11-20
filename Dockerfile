@@ -12,7 +12,7 @@ RUN npx ng build --configuration production
 FROM nginx:alpine
 
 # Copiar los archivos compilados desde la etapa anterior
-COPY --from=build /app/dist/pet-care-frontend/browser /usr/share/nginx/html
+COPY --from=build /app/dist/peludos-front/* /usr/share/nginx/html
 
 # Copiar la plantilla de configuración de NGINX
 COPY nginx.conf.template /etc/nginx/templates/default.conf.template
