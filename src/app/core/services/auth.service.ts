@@ -15,13 +15,17 @@ export class AuthService {
   private readonly KEY = 'peludos_token';
 
   login(correo: string, contrasena: string) {
-  const body = new HttpParams().set('username', correo).set('password', contrasena);
-  return this.http
-    .post<LoginResponse>('/api/auth/login', body, {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    })
-    .pipe(tap((res) => localStorage.setItem(this.KEY, res.access_token)));
-}
+    // Creamos el objeto JSON con los nombres exactos que espera tu backend
+    const body = {
+      correo_electronico: correo,
+      contrasena: contrasena
+    };
+
+    return this.http
+      // Apuntamos directo a la IP de Azure con el puerto 8000
+      .post<LoginResponse>('http://68.211.178.234:8000/auth/login', body)
+      .pipe(tap((res) => localStorage.setItem(this.KEY, res.access_token)));
+  }
 
   get token() {
     return localStorage.getItem(this.KEY);
