@@ -32,7 +32,8 @@ export class MisMascotas {
 
   cargar() {
     this.cargando.set(true);
-    this.http.get<any[]>('/api/mascotas/mis-mascotas').subscribe({
+    // CAMBIO 1: URL directa a Azure y sin /api
+    this.http.get<any[]>('http://68.211.178.234:8000/mascotas/mis-mascotas').subscribe({
       next: (data) => {
         this.mascotas.set(data);
         this.cargando.set(false);
@@ -51,7 +52,8 @@ export class MisMascotas {
     if (!body.fecha_nacimiento) delete body.fecha_nacimiento;
     if (!body.raza) delete body.raza;
 
-    this.http.post('/api/mascotas/', body).subscribe({
+    // CAMBIO 2: URL directa a Azure y CON barra al final
+    this.http.post('http://68.211.178.234:8000/mascotas/', body).subscribe({
       next: () => {
         this.nueva = { nombre: '', especie: '', raza: '', fecha_nacimiento: '' };
         this.mensaje.set('¡Mascota añadida!');
